@@ -2,6 +2,10 @@ package com.example.demo.entity;
 
 import jakarta.persistence.*;
 
+import jakarta.persistence.Table;
+import org.hibernate.annotations.*;
+
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -21,7 +25,10 @@ import java.time.LocalDateTime;
 )
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "product_gen"
+    )
     @SequenceGenerator(
             name = "product_gen",
             sequenceName = "product_sequence_name",
@@ -36,7 +43,9 @@ public class Product {
     private BigDecimal price;
     private boolean active;
     private String imageUrl;
+    @CreationTimestamp
     private LocalDateTime dateCreated;
+    @UpdateTimestamp
     private LocalDateTime lastUpdated;
 
     public long getId() {
