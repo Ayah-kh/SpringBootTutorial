@@ -1,9 +1,6 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.UniqueConstraint;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -14,7 +11,7 @@ import java.time.LocalDateTime;
         uniqueConstraints = {
                 @UniqueConstraint(
                         name = "sku_unique",
-                        columnNames = "sku"
+                        columnNames = "stock_keeping_unit"
                 ),
                 @UniqueConstraint(
                         name = "name_unique",
@@ -24,8 +21,11 @@ import java.time.LocalDateTime;
 )
 public class Product {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(name = "stock_keeping_unit", nullable = false)
     private String sku;
+    @Column(nullable = false)
     private String name;
     private String description;
     private BigDecimal price;
