@@ -1,13 +1,29 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "Products",
+        schema = "ecommerce",
+        uniqueConstraints = {
+                @UniqueConstraint(
+                        name = "sku_unique",
+                        columnNames = "sku"
+                ),
+                @UniqueConstraint(
+                        name = "name_unique",
+                        columnNames = "name"
+                )
+        }
+)
 public class Product {
-   @Id
+    @Id
     private long id;
     private String sku;
     private String name;
