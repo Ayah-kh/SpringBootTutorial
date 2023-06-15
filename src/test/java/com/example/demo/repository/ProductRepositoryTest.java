@@ -28,9 +28,11 @@ class ProductRepositoryTest {
         product.setImageUrl("product1.png");
 
         //save product
+        Product savedObject= productRepository.save(product);
 
 
         //display product information
+        System.out.println(savedObject.getId());
     }
 
 }
