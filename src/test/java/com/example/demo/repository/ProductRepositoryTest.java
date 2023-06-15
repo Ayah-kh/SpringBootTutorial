@@ -84,4 +84,31 @@ class ProductRepositoryTest {
 
     }
 
+    @Test
+    void findAllMethod(){
+        List<Product> products= productRepository.findAll();
+        System.out.println("======================");
+        products.forEach(product -> System.out.println(product.getName()));
+        System.out.println("======================");
+    }
+
+    @Test
+    void deleteByIdMethod(){
+        long id = 1L;
+
+        productRepository.deleteById(id);
+    }
+
+    @Test
+    void deleteMethod(){
+
+        //find an entity by id
+        long id=3L;
+        Product product=productRepository.findById(id).get();
+
+        //delete (entity)
+        productRepository.delete(product);
+
+    }
+
 }
