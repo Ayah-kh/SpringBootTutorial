@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @SpringBootTest
 class ProductRepositoryTest {
@@ -61,6 +62,25 @@ class ProductRepositoryTest {
 
     @Test
     void saveAllMethod(){
+        //create product
+        Product product = new Product();
+        product.setName("product 2");
+        product.setDescription("product 2 description");
+        product.setSku("100ABCD");
+        product.setPrice(new BigDecimal(200));
+        product.setActive(true);
+        product.setImageUrl("product2.png");
+
+        //create product
+        Product product3 = new Product();
+        product3.setName("product 3");
+        product3.setDescription("product 3 description");
+        product3.setSku("100ABCDE");
+        product3.setPrice(new BigDecimal(200));
+        product3.setActive(true);
+        product3.setImageUrl("product3.png");
+
+        productRepository.saveAll(List.of(product,product3));
 
     }
 
