@@ -33,6 +33,13 @@ class ProductRepositoryTest {
 
         //display product information
         System.out.println(savedObject.getId());
+        System.out.println(savedObject.toString());
+    }
+
+    @Test
+    void updateUsingSaveMethod(){
+
+
     }
 
 }
