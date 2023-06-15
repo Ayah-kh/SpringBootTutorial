@@ -39,6 +39,18 @@ class ProductRepositoryTest {
     @Test
     void updateUsingSaveMethod(){
 
+        //find or retrieve an entity form database
+        Long id=1L;
+        Product product=productRepository.findById(id).get();
+
+        //update entity information
+
+        product.setName("updated product 1");
+        product.setDescription("updated product 1 desc");
+
+        //save updated entity
+        productRepository.save(product);
+
 
     }
 
