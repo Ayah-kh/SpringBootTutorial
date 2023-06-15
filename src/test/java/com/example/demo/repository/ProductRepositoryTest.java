@@ -63,24 +63,24 @@ class ProductRepositoryTest {
     @Test
     void saveAllMethod(){
         //create product
-        Product product = new Product();
-        product.setName("product 2");
-        product.setDescription("product 2 description");
-        product.setSku("100ABCD");
-        product.setPrice(new BigDecimal(200));
-        product.setActive(true);
-        product.setImageUrl("product2.png");
+        Product product4 = new Product();
+        product4.setName("product 4");
+        product4.setDescription("product 2 description");
+        product4.setSku("101ABCD");
+        product4.setPrice(new BigDecimal(200));
+        product4.setActive(true);
+        product4.setImageUrl("product2.png");
 
         //create product
-        Product product3 = new Product();
-        product3.setName("product 3");
-        product3.setDescription("product 3 description");
-        product3.setSku("100ABCDE");
-        product3.setPrice(new BigDecimal(200));
-        product3.setActive(true);
-        product3.setImageUrl("product3.png");
+        Product product5 = new Product();
+        product5.setName("product 5");
+        product5.setDescription("product 3 description");
+        product5.setSku("102ABCDE");
+        product5.setPrice(new BigDecimal(200));
+        product5.setActive(true);
+        product5.setImageUrl("product3.png");
 
-        productRepository.saveAll(List.of(product,product3));
+        productRepository.saveAll(List.of(product4,product5));
 
     }
 
@@ -110,5 +110,26 @@ class ProductRepositoryTest {
         productRepository.delete(product);
 
     }
+
+    @Test
+    void deleteAllMethod(){
+       // productRepository.deleteAll();
+
+        Product product=productRepository.findById(14L).get();
+        Product product2=productRepository.findById(15L).get();
+
+        productRepository.deleteAll(List.of(product,product2));
+
+    }
+
+    @Test
+    void countMethod(){
+        long count = productRepository.count();
+        System.out.println("==============");
+        System.out.println("| count = " + count+"  |");
+        System.out.println("==============");
+    }
+
+
 
 }
