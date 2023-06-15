@@ -3,12 +3,9 @@ package com.example.demo.repository;
 import com.example.demo.entity.Product;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class ProductRepositoryTest {
@@ -17,9 +14,9 @@ class ProductRepositoryTest {
     private ProductRepository productRepository;
 
     @Test
-    void saveMethod(){
+    void saveMethod() {
         //create product
-        Product product=new Product();
+        Product product = new Product();
         product.setName("product 1");
         product.setDescription("product 1 description");
         product.setSku("100ABC");
@@ -28,7 +25,7 @@ class ProductRepositoryTest {
         product.setImageUrl("product1.png");
 
         //save product
-        Product savedObject= productRepository.save(product);
+        Product savedObject = productRepository.save(product);
 
 
         //display product information
@@ -37,11 +34,11 @@ class ProductRepositoryTest {
     }
 
     @Test
-    void updateUsingSaveMethod(){
+    void updateUsingSaveMethod() {
 
         //find or retrieve an entity form database
-        Long id=1L;
-        Product product=productRepository.findById(id).get();
+        Long id = 1L;
+        Product product = productRepository.findById(id).get();
 
         //update entity information
 
@@ -51,6 +48,19 @@ class ProductRepositoryTest {
         //save updated entity
         productRepository.save(product);
 
+
+    }
+
+    @Test
+    void findByIdMethod() {
+        Long id = 1L;
+
+        Product product = productRepository.findById(id).get();
+
+    }
+
+    @Test
+    void saveAllMethod(){
 
     }
 
